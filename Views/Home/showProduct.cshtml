@@ -1,0 +1,91 @@
+﻿@model IEnumerable<Tuan6.Models.Product>
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>showProduct</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" />
+</head>
+<body>
+    <p>
+        @Html.ActionLink("Create New", "Create")
+    </p>
+    <p style="color:red">@ViewBag.mess</p>
+    <div class="container">
+        <nav class="navbar bg-body-tertiary">
+            <div class="container-fluid">
+                <form class="d-flex" role="search" method="post" action="/Home/search">
+                    <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search" name="txt_search">
+                    <button class="btn btn-outline-success" type="submit">Search</button>
+                </form>
+            </div>
+        </nav>
+        <table class="table">
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.TenLoai)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Masp)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Tensp)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Duongdan)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Gia)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Mota)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Maloai)
+                </th>
+                <th></th>
+            </tr>
+
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.TenLoai)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Masp)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Tensp)
+                    </td>
+                    <td>
+                        <img src="/Images/@item.Duongdan" alt="Alternate Text" class="mx-auto" width="50px" ; />
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Gia)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Mota)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Maloai)
+                    </td>
+                    <td>
+                        @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
+                        @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
+                        @Html.ActionLink("Delete", "Delete", new { id = item.Masp })
+                    </td>
+                </tr>
+            }
+
+
+        </table>
+    </div>
+</body>
+</html>
